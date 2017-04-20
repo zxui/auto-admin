@@ -1,7 +1,0 @@
-{
-  "plugins": ["vue"],
-  "extends": ["elemefe"],
-  "globals": {
-    "Promise": true
-  }
-}
