@@ -46,7 +46,7 @@
                         {name: 'Typography 字体', code: 'Typography'},
                         {name: 'Icon 图标', code: 'Icon'},
                         {name: 'Button 按钮', code: 'Button'}]
-                },{
+                }, {
                     name: '表单',
                     code: 'form',
                     icon: 'el-icon-edit',
@@ -66,7 +66,7 @@
                         {name: 'Rate 评分', code: 'Rate'},
                         {name: 'ColorPicker 颜色选择器', code: 'ColorPicker'},
                         {name: 'Form 表单', code: 'Form'}]
-                },{
+                }, {
                     name: '数据展示',
                     code: 'dataGrid',
                     icon: 'el-icon-document',
@@ -77,7 +77,7 @@
                         {name: 'Tree 树形控件', code: 'Tree'},
                         {name: 'Pagination 分页', code: 'Pagination'},
                         {name: 'Badge 标记', code: 'Badge'}]
-                },{
+                }, {
                     name: '消息提示',
                     code: 'Notice',
                     icon: 'el-icon-information',
@@ -116,8 +116,9 @@
     .header-operations li {
         float: left;
     }
-    .c-content-s{
-        padding: 20px;
+
+    .c-content-s {
+        padding: 10px;
     }
 </style>
 
