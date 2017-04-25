@@ -38,8 +38,8 @@
             return {
                 meuns: [{
                     name: '基础组件',
-                    code: 'dataGrid',
-                    icon: 'el-icon-message',
+                    code: 'base',
+                    icon: 'el-icon-menu',
                     childrens: [
                         {name: 'Layout 布局', code: 'Layout'},
                         {name: 'Color 色彩', code: 'Color'},
@@ -47,9 +47,29 @@
                         {name: 'Icon 图标', code: 'Icon'},
                         {name: 'Button 按钮', code: 'Button'}]
                 },{
+                    name: '表单',
+                    code: 'form',
+                    icon: 'el-icon-edit',
+                    childrens: [
+                        {name: 'Radio 单选框', code: 'Radio'},
+                        {name: 'Checkbox 多选框', code: 'Checkbox'},
+                        {name: 'Input 输入框', code: 'Input'},
+                        {name: 'InputNumber 计数器', code: 'InputNumber'},
+                        {name: 'Select 选择器', code: 'Select'},
+                        {name: 'Cascader 级联选择器', code: 'Cascader'},
+                        {name: 'Switch 开关', code: 'Switch'},
+                        {name: 'Slider 滑块', code: 'Slider'},
+                        {name: 'TimePicker 时间选择器', code: 'TimePicker'},
+                        {name: 'DatePicker 日期选择器', code: 'DatePicker'},
+                        {name: 'DateTimePicker 日期时间选择器', code: 'DateTimePicker'},
+                        {name: 'Upload 上传', code: 'Upload'},
+                        {name: 'Rate 评分', code: 'Rate'},
+                        {name: 'ColorPicker 颜色选择器', code: 'ColorPicker'},
+                        {name: 'Form 表单', code: 'Form'}]
+                },{
                     name: '数据展示',
                     code: 'dataGrid',
-                    icon: 'el-icon-message',
+                    icon: 'el-icon-document',
                     childrens: [
                         {name: 'Table 表格', code: 'Table'},
                         {name: 'Tag 标签', code: 'Tag'},
@@ -58,26 +78,15 @@
                         {name: 'Pagination 分页', code: 'Pagination'},
                         {name: 'Badge 标记', code: 'Badge'}]
                 },{
-                    name: '数据展示',
-                    code: 'dataGrid',
-                    icon: 'el-icon-message',
+                    name: '消息提示',
+                    code: 'Notice',
+                    icon: 'el-icon-information',
                     childrens: [
-                        {name: 'Table 表格', code: 'Table'},
-                        {name: 'Tag 标签', code: 'Tag'},
-                        {name: 'Progress 进度条', code: 'Progress'},
-                        {name: 'Tree 树形控件', code: 'Tree'},
-                        {name: 'Pagination 分页', code: 'Pagination'},
-                        {name: 'Badge 标记', code: 'Badge'}]
-                },{
-                    name: '数据展示',
-                    code: 'dataGrid',
-                    icon: 'el-icon-message',
-                    childrens: [{name: 'Table 表格', code: 'Table'},
-                        {name: 'Tag 标签', code: 'Tag'},
-                        {name: 'Progress 进度条', code: 'Progress'},
-                        {name: 'Tree 树形控件', code: 'Tree'},
-                        {name: 'Pagination 分页', code: 'Pagination'},
-                        {name: 'Badge 标记', code: 'Badge'}]
+                        {name: 'Alert 警告', code: 'Alert'},
+                        {name: 'Loading 加载', code: 'Loading'},
+                        {name: 'Message 消息提示', code: 'Message'},
+                        {name: 'MessageBox 弹框', code: 'MessageBox'},
+                        {name: 'Notification 通知', code: 'Notification'}]
                 }]
             }
         },
