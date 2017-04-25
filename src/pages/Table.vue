@@ -1,5 +1,5 @@
 <template>
-    <div class="c-content-s">
+    <div>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column
                     label="日期"
@@ -72,9 +72,3 @@
         }
     }
 </script>
-
-<style>
-    .c-content-s{
-        padding: 20px;
-    }
-</style>

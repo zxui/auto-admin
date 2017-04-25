@@ -24,7 +24,9 @@
                 </div>
             </el-col>
             <el-col :span="20">
-                <router-view></router-view>
+                <div class="c-content-s">
+                    <router-view></router-view>
+                </div>
             </el-col>
         </el-row>
     </div>
@@ -35,6 +37,38 @@
         data () {
             return {
                 meuns: [{
+                    name: '基础组件',
+                    code: 'dataGrid',
+                    icon: 'el-icon-message',
+                    childrens: [
+                        {name: 'Layout 布局', code: 'Layout'},
+                        {name: 'Color 色彩', code: 'Color'},
+                        {name: 'Typography 字体', code: 'Typography'},
+                        {name: 'Icon 图标', code: 'Icon'},
+                        {name: 'Button 按钮', code: 'Button'}]
+                },{
+                    name: '数据展示',
+                    code: 'dataGrid',
+                    icon: 'el-icon-message',
+                    childrens: [
+                        {name: 'Table 表格', code: 'Table'},
+                        {name: 'Tag 标签', code: 'Tag'},
+                        {name: 'Progress 进度条', code: 'Progress'},
+                        {name: 'Tree 树形控件', code: 'Tree'},
+                        {name: 'Pagination 分页', code: 'Pagination'},
+                        {name: 'Badge 标记', code: 'Badge'}]
+                },{
+                    name: '数据展示',
+                    code: 'dataGrid',
+                    icon: 'el-icon-message',
+                    childrens: [
+                        {name: 'Table 表格', code: 'Table'},
+                        {name: 'Tag 标签', code: 'Tag'},
+                        {name: 'Progress 进度条', code: 'Progress'},
+                        {name: 'Tree 树形控件', code: 'Tree'},
+                        {name: 'Pagination 分页', code: 'Pagination'},
+                        {name: 'Badge 标记', code: 'Badge'}]
+                },{
                     name: '数据展示',
                     code: 'dataGrid',
                     icon: 'el-icon-message',
@@ -72,6 +106,9 @@
 
     .header-operations li {
         float: left;
+    }
+    .c-content-s{
+        padding: 20px;
     }
 </style>
 
