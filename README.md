@@ -1,4 +1,4 @@
-# auto-admin
+# auto-admin v2.0
 
 ## Environment
 
