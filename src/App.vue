@@ -3,9 +3,11 @@
         <el-row>
             <el-col :span="24">
                 <div class="header-bg">
-                    <img src="./assets/logo.png"
-                         alt="logo"
-                         class="header-logo">
+                    <a href="/">
+                        <img src="./assets/logo.png"
+                             alt="logo"
+                             class="header-logo">
+                    </a>
                     <ul class="header-operations">
                         <li></li>
                         <li class="header-download"></li>
@@ -106,7 +108,9 @@
     }
 
     .header-logo {
-        height: 65px;
+        height: 45px;
+        padding: 5px;
+        margin-left: 20px;
     }
 
     .header-operations {
