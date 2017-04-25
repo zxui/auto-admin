@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import List from '../pages/List.vue';
-import Operator from '../pages/Operator.vue';
+import Table from '../pages/Table.vue';
 
 if (!window.VueRouter) Vue.use(VueRouter);
 
@@ -10,8 +10,8 @@ const routes = [
     path: '/',
     component: List
   },{
-    path: '/Operator',
-    component: Operator
+    path: '/Table',
+    component: Table
   }
 ];
 const router = new VueRouter({routes});
