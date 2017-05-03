@@ -3,7 +3,9 @@
         <el-row>
             <el-col :span="24">
                 <div class="header-bg">
-                    <a href=""><img src="./assets/logo.png" class="header-logo"></a>
+                    <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i class="el-icon-menu zx-slider-meun-btn"></i></a>
+                    <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i class="el-icon-close zx-slider-meun-btn"></i></a>
+                    <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"></a>
                     <ul class="header-operations">
                         <li></li>
                         <li class="header-download"></li>
@@ -11,7 +13,7 @@
                     </ul>
                 </div>
             </el-col>
-            <el-col :xs="0" :sm="6" :md="5" :lg="4">
+            <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
                 <div>
                     <el-menu default-active="2" unique-opened router>
                         <el-submenu :index="menu.code" v-for="menu in meuns">
@@ -21,8 +23,18 @@
                     </el-menu>
                 </div>
             </el-col>
-            <el-col :xs="24" :sm="18" :md="19" :lg="20">
-                <div class="c-content-s">
+            <el-col :xs="17" :sm="18" :md="19" :lg="20" class="zx-right-content">
+                <div class="zx-slider-meun">
+                    <div :class="{slideinPanel:silderStats,slideoutPanel:!silderStats}">
+                        <el-menu default-active="2" unique-opened router>
+                            <el-submenu :index="menu.code" v-for="menu in meuns">
+                                <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
+                                <el-menu-item v-for="child in menu.childrens" :index="child.code">{{child.name}}</el-menu-item>
+                            </el-submenu>
+                        </el-menu>
+                    </div>
+                </div>
+                <div class="c-content-s" >
                     <router-view></router-view>
                 </div>
             </el-col>
@@ -34,6 +46,7 @@
     export default {
         data () {
             return {
+                silderStats:false,
                 meuns: [{
                     name: '基础组件',
                     code: 'base',
@@ -88,7 +101,11 @@
                 }]
             }
         },
-        methods: {}
+        methods: {
+            showSilder:function(){
+                this.silderStats = !this.silderStats;
+            }
+    }
     }
 </script>
 
@@ -101,6 +118,7 @@
 
     .header-bg {
         background-color: #00a6ea;
+        box-shadow: 0px 2px 2px #cacaca;
     }
 
     .header-logo {
@@ -117,6 +135,59 @@
 
     .c-content-s {
         padding: 10px;
+    }
+    .zx-slider-meun-btn{
+        display: none;
+    }
+    .zx-slider-meun{
+        display: none;
+    }
+    .zxHide{
+        display: none;
+    }
+    .slideinPanel {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
+        position: fixed;
+        z-index: 2;
+        width: 60%;
+        min-height: 800px;
+        background-color: #eef1f6;
+        box-shadow: 1px 0px 5px #cacaca;
+    }
+    .slideoutPanel {
+        -webkit-transform: translate(-280px, 0);
+        transform: translate(-280px, 0);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
+        position: fixed;
+        z-index: 2;
+        width: 60%;
+        min-height: 800px;
+        background-color: #eef1f6;
+        box-shadow: 1px 0px 5px #cacaca;
+    }
+    @media screen and (max-width: 800px ){
+        .zx-left-meun{
+            display: none;
+        }
+        .zx-right-content{
+            width: 100%;
+        }
+        .zx-slider-meun{
+            display: block;
+        }
+        .zx-slider-meun-btn{
+            display: block;
+            color: white;
+            font-size: 24px;
+            float: left;
+            margin-top: 3%;
+            margin-left: 2%;
+        }
+        .header-logo-link{
+            margin-left: 35%;
+        }
     }
 </style>
 
