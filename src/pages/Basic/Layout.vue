@@ -1,5 +1,11 @@
 <template>
    <div>
+       <h3>Layout 布局
+           通过基础的 24 分栏，迅速简便地创建布局。
+       </h3>
+       <h5>基础布局
+           使用单一分栏创建基础的栅格布局。
+       </h5>
        <el-row>
            <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
        </el-row>

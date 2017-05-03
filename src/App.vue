@@ -3,9 +3,7 @@
         <el-row>
             <el-col :span="24">
                 <div class="header-bg">
-                    <img src="./assets/logo.png"
-                         alt="logo"
-                         class="header-logo">
+                    <a href=""><img src="./assets/logo.png" class="header-logo"></a>
                     <ul class="header-operations">
                         <li></li>
                         <li class="header-download"></li>
@@ -13,7 +11,7 @@
                     </ul>
                 </div>
             </el-col>
-            <el-col :span="4">
+            <el-col :xs="0" :sm="6" :md="5" :lg="4">
                 <div>
                     <el-menu default-active="2" unique-opened router>
                         <el-submenu :index="menu.code" v-for="menu in meuns">
@@ -23,7 +21,7 @@
                     </el-menu>
                 </div>
             </el-col>
-            <el-col :span="20">
+            <el-col :xs="24" :sm="18" :md="19" :lg="20">
                 <div class="c-content-s">
                     <router-view></router-view>
                 </div>
@@ -106,7 +104,7 @@
     }
 
     .header-logo {
-        height: 65px;
+        height: 45px;
     }
 
     .header-operations {
