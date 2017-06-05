@@ -21,6 +21,8 @@
                 </div>
             </el-col>
             <!--hearder end-->
+        </el-row>
+        <el-row>
             <!--宽屏菜单 start-->
             <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
                 <div>
@@ -52,6 +54,9 @@
                 </div>
                 <!--页面视图 end-->
             </el-col>
+        </el-row>
+        <el-row>
+            footer
         </el-row>
     </div>
 </template>
@@ -127,9 +132,22 @@
     body {
         margin: 0px;
         padding: 0px;
-        font-family: Helvetica, sans-serif;
+        font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+        overflow: auto;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
     }
-
+    .desc{
+        font-size: 14px;
+        color: #5e6d82;
+        line-height: 1.5em;
+    }
+    .pl6{
+        padding-left: 6px;
+    }
+    .pr6{
+        padding-right: 6px;
+    }
     .header-bg {
         background-color: #00a6ea;
         box-shadow: 0px 2px 2px #cacaca;
@@ -207,7 +225,7 @@
             margin-left: 10px;
         }
         .header-logo-link{
-            margin-left: 35%;
+            margin-left: 25%;
             text-decoration: none;
         }
     }

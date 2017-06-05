@@ -1,48 +1,52 @@
 <template>
    <div>
-       <h3>Layout 布局
-           通过基础的 24 分栏，迅速简便地创建布局。
+       <el-breadcrumb separator="/">
+           <el-breadcrumb-item :to="{ path: '/' }">导航页</el-breadcrumb-item>
+           <el-breadcrumb-item>Layout 布局</el-breadcrumb-item>
+       </el-breadcrumb>
+       <h3>
+           Layout 布局
        </h3>
-       <h5>基础布局
-           使用单一分栏创建基础的栅格布局。
-       </h5>
-       <el-row>
-           <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+       <span class="desc">
+           通过基础的 24 分栏，迅速简便地创建布局。
+       </span>
+       <el-row class="zx-el-row">
+           <el-col class="zx-el-col" :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
        </el-row>
-       <el-row>
-           <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
+       <el-row class="zx-el-row">
+           <el-col class="zx-el-col" :span="12"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="12"><div class="grid-content bg-purple-light"></div></el-col>
        </el-row>
-       <el-row>
-           <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="8"><div class="grid-content bg-purple-light"></div></el-col>
-           <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+       <el-row class="zx-el-row">
+           <el-col class="zx-el-col" :span="8"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="8"><div class="grid-content bg-purple-light"></div></el-col>
+           <el-col class="zx-el-col" :span="8"><div class="grid-content bg-purple"></div></el-col>
        </el-row>
-       <el-row>
-           <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-           <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
+       <el-row class="zx-el-row">
+           <el-col class="zx-el-col" :span="6"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="6"><div class="grid-content bg-purple-light"></div></el-col>
+           <el-col class="zx-el-col" :span="6"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="6"><div class="grid-content bg-purple-light"></div></el-col>
        </el-row>
-       <el-row>
-           <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-           <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
-           <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
-           <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+       <el-row class="zx-el-row">
+           <el-col class="zx-el-col" :span="4"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+           <el-col class="zx-el-col" :span="4"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+           <el-col class="zx-el-col" :span="4"><div class="grid-content bg-purple"></div></el-col>
+           <el-col class="zx-el-col" :span="4"><div class="grid-content bg-purple-light"></div></el-col>
        </el-row>
    </div>
 </template>
 
 <style>
-    .el-row {
+    .zx-el-row {
         margin-bottom: 20px;
     &:last-child {
          margin-bottom: 0;
      }
     }
-    .el-col {
+    .zx-el-col {
         border-radius: 4px;
     }
     .bg-purple-dark {
@@ -62,4 +66,5 @@
         padding: 10px 0;
         background-color: #f9fafc;
     }
+
 </style>

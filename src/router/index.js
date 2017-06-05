@@ -19,7 +19,7 @@ import Cascader from '../pages/Form/Cascader.vue';
 import Switch from '../pages/Form/Switch.vue';
 import Slider from '../pages/Form/Slider.vue';
 import TimePicker from '../pages/Form/TimePicker.vue';
-import DatePicker from '../pages/Basic/DatePicker.vue';
+import DatePicker from '../pages/Form/DatePicker.vue';
 import DateTimePicker from '../pages/Form/DateTimePicker.vue';
 import Upload from '../pages/Form/Upload.vue';
 import Rate from '../pages/Form/Rate.vue';
