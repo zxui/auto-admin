@@ -148,6 +148,7 @@
 
     .header-operations .user-info{
         font-size: 16px;
+        cursor: pointer;
     }
 
     .c-content-s {
