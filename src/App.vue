@@ -6,7 +6,7 @@
                 <div class="header-bg">
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i class="el-icon-menu zx-slider-meun-btn"></i></a>
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i class="el-icon-close zx-slider-meun-btn"></i></a>
-                    <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"><span style="font-size: 20px; color: white;">ZX-UI</span></a>
+                    <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"></a>
                     <div class="header-operations">
                         <el-dropdown class="user-info" trigger="click">
                         <span class="el-dropdown-link">

@@ -1,7 +1,7 @@
 <template>
     <div>
         <p class="tip">
-            ZX-UI【auto-admin】是基于Element创建的一套后台管理系统，主要目的在于加快项目的开发，将公共的模块抽取，剔除多余的重复性工作。
+            ZX-UI【auto-admin】是基于<a href="http://element.eleme.io/#/zh-CN" target="_blank">Element</a>创建的一套后台管理系统，主要目的在于加快项目的开发，将公共的模块抽取，剔除多余的重复性工作。
         </p>
     </div>
 </template>
