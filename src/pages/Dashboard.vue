@@ -1,41 +1,8 @@
 <template>
     <div>
-        <el-table :data="tableData" border style="width: 100%">
-            <el-table-column
-                    label="日期"
-                    width="180">
-                <template scope="scope">
-                    <el-icon name="time"></el-icon>
-                    <span style="margin-left: 10px">{{ scope.row.date }}</span>
-                </template>
-            </el-table-column>
-            <el-table-column
-                    label="姓名"
-                    width="180">
-                <template scope="scope">
-                    <el-popover trigger="hover" placement="top">
-                        <p>姓名: {{ scope.row.name }}</p>
-                        <p>住址: {{ scope.row.address }}</p>
-                        <div slot="reference" class="name-wrapper">
-                            <el-tag>{{ scope.row.name }}</el-tag>
-                        </div>
-                    </el-popover>
-                </template>
-            </el-table-column>
-            <el-table-column label="操作">
-                <template scope="scope">
-                    <el-button
-                            size="small"
-                            @click="handleEdit(scope.$index, scope.row)">编辑
-                    </el-button>
-                    <el-button
-                            size="small"
-                            type="danger"
-                            @click="handleDelete(scope.$index, scope.row)">删除
-                    </el-button>
-                </template>
-            </el-table-column>
-        </el-table>
+        <p class="tip">
+            ZX-UI【auto-admin】是基于Element创建的一套后台管理系统，主要目的在于加快项目的开发，将公共的模块抽取，剔除多余的重复性工作。
+        </p>
     </div>
 </template>
 
@@ -43,32 +10,53 @@
     export default {
         data () {
             return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }]
+
             }
         },
         methods: {
-            handleEdit(index, row) {
-                console.log(index, row);
-            },
-            handleDelete(index, row) {
-                console.log(index, row);
-            }
+
         }
     }
 </script>
+
+<style>
+    p.tip, p.warning {
+        padding: 12px 24px 12px 20px;
+        margin: 2em 0;
+        border-left: 4px solid;
+        background-color: #f8f8f8;
+        position: relative;
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+    p.tip:before, p.warning:before {
+        content: "!";
+        position: absolute;
+        top: 14px;
+        left: -12px;
+        color: #fff;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 20px;
+        font-weight: 700;
+        font-family: Dosis,Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+    }
+
+    p.warning {
+        border-left-color: #f66;
+    }
+
+    p.warning:before {
+        background-color: #f66;
+    }
+
+    p.tip {
+        border-left-color: #3c763d;
+    }
+
+    p.tip:before {
+        background-color: #3c763d;
+    }
+</style>

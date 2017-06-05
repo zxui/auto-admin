@@ -1,18 +1,27 @@
 <template>
     <div id="app">
         <el-row>
+            <!--hearder start-->
             <el-col :span="24">
                 <div class="header-bg">
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i class="el-icon-menu zx-slider-meun-btn"></i></a>
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i class="el-icon-close zx-slider-meun-btn"></i></a>
-                    <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"></a>
-                    <ul class="header-operations">
-                        <li></li>
-                        <li class="header-download"></li>
-                        <li></li>
-                    </ul>
+                    <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"><span style="font-size: 20px; color: white;">ZX-UI</span></a>
+                    <div class="header-operations">
+                        <el-dropdown class="user-info" trigger="click">
+                        <span class="el-dropdown-link">
+                            管理员：zxui<i class="el-icon-caret-bottom el-icon--right"></i>
+                         </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>修改个人信息</el-dropdown-item>
+                                <el-dropdown-item divided>退出</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </div>
                 </div>
             </el-col>
+            <!--hearder end-->
+            <!--宽屏菜单 start-->
             <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
                 <div>
                     <el-menu default-active="2" unique-opened router>
@@ -23,7 +32,9 @@
                     </el-menu>
                 </div>
             </el-col>
+            <!--宽屏菜单 end-->
             <el-col :xs="17" :sm="18" :md="19" :lg="20" class="zx-right-content">
+                <!--窄屏菜单 start-->
                 <div class="zx-slider-meun">
                     <div :class="{slideinPanel:silderStats,slideoutPanel:!silderStats}">
                         <el-menu default-active="2" unique-opened router>
@@ -34,9 +45,12 @@
                         </el-menu>
                     </div>
                 </div>
+                <!--窄屏菜单 end-->
+                <!--页面视图 start-->
                 <div class="c-content-s" >
                     <router-view></router-view>
                 </div>
+                <!--页面视图 end-->
             </el-col>
         </el-row>
     </div>
@@ -123,14 +137,17 @@
 
     .header-logo {
         height: 45px;
+        margin-left: 10px;
     }
 
     .header-operations {
         float: right;
+        margin-top: 15px;
+        margin-right: 20px;
     }
 
-    .header-operations li {
-        float: left;
+    .header-operations .user-info{
+        font-size: 16px;
     }
 
     .c-content-s {
@@ -151,21 +168,24 @@
         transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
         position: fixed;
         z-index: 2;
-        width: 60%;
+        width: 55%;
         min-height: 800px;
         background-color: #eef1f6;
         box-shadow: 1px 0px 5px #cacaca;
     }
     .slideoutPanel {
-        -webkit-transform: translate(-280px, 0);
-        transform: translate(-280px, 0);
+        -webkit-transform: translate(-480px, 0);
+        transform: translate(-480px, 0);
         transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
         position: fixed;
         z-index: 2;
-        width: 60%;
+        width: 55%;
         min-height: 800px;
         background-color: #eef1f6;
         box-shadow: 1px 0px 5px #cacaca;
+    }
+    .header-logo-link{
+        text-decoration: none;
     }
     @media screen and (max-width: 800px ){
         .zx-left-meun{
@@ -182,11 +202,12 @@
             color: white;
             font-size: 24px;
             float: left;
-            margin-top: 3%;
-            margin-left: 2%;
+            margin-top: 10px;
+            margin-left: 10px;
         }
         .header-logo-link{
             margin-left: 35%;
+            text-decoration: none;
         }
     }
 </style>
