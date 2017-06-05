@@ -22,10 +22,10 @@
             </el-col>
             <!--hearder end-->
         </el-row>
-        <el-row>
+        <el-row style="height: 874px">
             <!--宽屏菜单 start-->
             <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
-                <div>
+                <div style="height: 874px;overflow-y: scroll">
                     <el-menu default-active="2" unique-opened router>
                         <el-submenu :index="menu.code" v-for="menu in meuns">
                             <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
@@ -37,7 +37,7 @@
             <!--宽屏菜单 end-->
             <el-col :xs="17" :sm="18" :md="19" :lg="20" class="zx-right-content">
                 <!--窄屏菜单 start-->
-                <div class="zx-slider-meun">
+                <div class="zx-slider-meun" style="overflow-y: scroll">
                     <div :class="{slideinPanel:silderStats,slideoutPanel:!silderStats}">
                         <el-menu default-active="2" unique-opened router>
                             <el-submenu :index="menu.code" v-for="menu in meuns">
@@ -49,14 +49,16 @@
                 </div>
                 <!--窄屏菜单 end-->
                 <!--页面视图 start-->
-                <div class="c-content-s" >
+                <div class="c-content-s" style="height: 850px;overflow-y: scroll">
                     <router-view></router-view>
                 </div>
                 <!--页面视图 end-->
             </el-col>
         </el-row>
         <el-row>
-            footer
+            <div :span="24" class="zx-footer">
+                Copyright@2016 zx-ui All rights reserved
+            </div>
         </el-row>
     </div>
 </template>
@@ -228,6 +230,13 @@
             margin-left: 25%;
             text-decoration: none;
         }
+    }
+    .zx-footer{
+        height: 22px;
+        text-align: center;
+        background-color: #1c8de0;
+        color: white;
+        padding-top: 5px;
     }
 </style>
 
