@@ -5,12 +5,13 @@
             <el-col :span="24">
                 <div class="header-bg">
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i class="el-icon-menu zx-slider-meun-btn"></i></a>
-                    <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i class="el-icon-close zx-slider-meun-btn"></i></a>
+                    <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i
+                            class="el-icon-close zx-slider-meun-btn"></i></a>
                     <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"></a>
                     <div class="header-operations">
                         <el-dropdown class="user-info" trigger="click">
                         <span class="el-dropdown-link">
-                            管理员：zxui<i class="el-icon-caret-bottom el-icon--right"></i>
+                            {{windowHeight}}管理员：zxui<i class="el-icon-caret-bottom el-icon--right"></i>
                          </span>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>修改个人信息</el-dropdown-item>
@@ -22,10 +23,10 @@
             </el-col>
             <!--hearder end-->
         </el-row>
-        <el-row style="height: 874px">
+        <el-row :style="windowHeight">
             <!--宽屏菜单 start-->
             <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
-                <div style="height: 874px;overflow-y: scroll">
+                <div :style="windowHeight">
                     <el-menu default-active="2" unique-opened router>
                         <el-submenu :index="menu.code" v-for="menu in meuns">
                             <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
@@ -37,7 +38,7 @@
             <!--宽屏菜单 end-->
             <el-col :xs="17" :sm="18" :md="19" :lg="20" class="zx-right-content">
                 <!--窄屏菜单 start-->
-                <div class="zx-slider-meun" style="overflow-y: scroll">
+                <div class="zx-slider-meun">
                     <div :class="{slideinPanel:silderStats,slideoutPanel:!silderStats}">
                         <el-menu default-active="2" unique-opened router>
                             <el-submenu :index="menu.code" v-for="menu in meuns">
@@ -49,7 +50,7 @@
                 </div>
                 <!--窄屏菜单 end-->
                 <!--页面视图 start-->
-                <div class="c-content-s" style="height: 850px;overflow-y: scroll">
+                <div class="c-content-s">
                     <router-view></router-view>
                 </div>
                 <!--页面视图 end-->
@@ -64,10 +65,13 @@
 </template>
 
 <script>
+    let _unbodyHeight = 76;;
     export default {
         data () {
             return {
-                silderStats:false,
+                unbodyHeight: _unbodyHeight,
+                windowHeight: 'height: ' + (window.innerHeight - _unbodyHeight) + 'px',   // 这里是给到了一个默认值 （这个很重要）
+                silderStats: false,
                 meuns: [{
                     name: '基础组件',
                     code: 'base',
@@ -123,10 +127,16 @@
             }
         },
         methods: {
-            showSilder:function(){
+            showSilder: function () {
                 this.silderStats = !this.silderStats;
             }
-    }
+        }
+        , mounted () {
+            let _this = this;
+            window.onresize = function () {
+                _this.windowHeight = 'height: ' + (window.innerHeight - _this.unbodyHeight) + 'px;'
+            }
+        }
     }
 </script>
 
@@ -134,22 +144,26 @@
     body {
         margin: 0px;
         padding: 0px;
-        font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-        overflow: auto;
+        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+        overflow: hidden;
         font-weight: 400;
         -webkit-font-smoothing: antialiased;
     }
-    .desc{
+
+    .desc {
         font-size: 14px;
         color: #5e6d82;
         line-height: 1.5em;
     }
-    .pl6{
+
+    .pl6 {
         padding-left: 6px;
     }
-    .pr6{
+
+    .pr6 {
         padding-right: 6px;
     }
+
     .header-bg {
         background-color: #00a6ea;
         box-shadow: 0px 2px 2px #cacaca;
@@ -166,7 +180,7 @@
         margin-right: 20px;
     }
 
-    .header-operations .user-info{
+    .header-operations .user-info {
         font-size: 16px;
         cursor: pointer;
     }
@@ -174,15 +188,19 @@
     .c-content-s {
         padding: 10px;
     }
-    .zx-slider-meun-btn{
+
+    .zx-slider-meun-btn {
         display: none;
     }
-    .zx-slider-meun{
+
+    .zx-slider-meun {
         display: none;
     }
-    .zxHide{
+
+    .zxHide {
         display: none;
     }
+
     .slideinPanel {
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
@@ -194,6 +212,7 @@
         background-color: #eef1f6;
         box-shadow: 1px 0px 5px #cacaca;
     }
+
     .slideoutPanel {
         -webkit-transform: translate(-480px, 0);
         transform: translate(-480px, 0);
@@ -205,20 +224,25 @@
         background-color: #eef1f6;
         box-shadow: 1px 0px 5px #cacaca;
     }
-    .header-logo-link{
+
+    .header-logo-link {
         text-decoration: none;
     }
-    @media screen and (max-width: 800px ){
-        .zx-left-meun{
+
+    @media screen and (max-width: 800px ) {
+        .zx-left-meun {
             display: none;
         }
-        .zx-right-content{
+
+        .zx-right-content {
             width: 100%;
         }
-        .zx-slider-meun{
+
+        .zx-slider-meun {
             display: block;
         }
-        .zx-slider-meun-btn{
+
+        .zx-slider-meun-btn {
             display: block;
             color: white;
             font-size: 24px;
@@ -226,12 +250,14 @@
             margin-top: 10px;
             margin-left: 10px;
         }
-        .header-logo-link{
+
+        .header-logo-link {
             margin-left: 25%;
             text-decoration: none;
         }
     }
-    .zx-footer{
+
+    .zx-footer {
         height: 22px;
         text-align: center;
         background-color: #1c8de0;
