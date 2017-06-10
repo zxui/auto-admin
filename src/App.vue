@@ -7,11 +7,11 @@
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i class="el-icon-menu zx-slider-meun-btn"></i></a>
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i
                             class="el-icon-close zx-slider-meun-btn"></i></a>
-                    <a class="header-logo-link" href=""><img src="./assets/logo.png" class="header-logo"></a>
+                    <a class="header-logo-link" href="/"><img src="./assets/logo.png" class="header-logo"></a>
                     <div class="header-operations">
                         <el-dropdown class="user-info" trigger="click">
                         <span class="el-dropdown-link">
-                            {{windowHeight}}管理员：zxui<i class="el-icon-caret-bottom el-icon--right"></i>
+                            管理员：zxui<i class="el-icon-caret-bottom el-icon--right"></i>
                          </span>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item>修改个人信息</el-dropdown-item>
@@ -26,7 +26,7 @@
         <el-row :style="windowHeight">
             <!--宽屏菜单 start-->
             <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
-                <div :style="windowHeight">
+                <div class="zx-left-meun-content" :style="windowHeight">
                     <el-menu default-active="2" unique-opened router>
                         <el-submenu :index="menu.code" v-for="menu in meuns">
                             <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
@@ -38,8 +38,8 @@
             <!--宽屏菜单 end-->
             <el-col :xs="17" :sm="18" :md="19" :lg="20" class="zx-right-content">
                 <!--窄屏菜单 start-->
-                <div class="zx-slider-meun">
-                    <div :class="{slideinPanel:silderStats,slideoutPanel:!silderStats}">
+                <div class="zx-slider-meun" >
+                    <div :class="{slideinPanel:silderStats,slideoutPanel:!silderStats}" :style="windowHeight">
                         <el-menu default-active="2" unique-opened router>
                             <el-submenu :index="menu.code" v-for="menu in meuns">
                                 <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
@@ -50,22 +50,23 @@
                 </div>
                 <!--窄屏菜单 end-->
                 <!--页面视图 start-->
-                <div class="c-content-s">
+                <div class="c-content-s" :style="windowHeight">
                     <router-view></router-view>
                 </div>
                 <!--页面视图 end-->
+                <div :class="{zxSliderMeunMask:silderStats}" @click="showSilder"></div>
             </el-col>
         </el-row>
         <el-row>
             <div :span="24" class="zx-footer">
-                Copyright@2016 zx-ui All rights reserved
+                Copyright@2016 zx-ui All rights reserved.
             </div>
         </el-row>
     </div>
 </template>
 
 <script>
-    let _unbodyHeight = 76;;
+    let _unbodyHeight = 76;
     export default {
         data () {
             return {
@@ -79,7 +80,6 @@
                     childrens: [
                         {name: 'Layout 布局', code: 'Layout'},
                         {name: 'Color 色彩', code: 'Color'},
-                        {name: 'Typography 字体', code: 'Typography'},
                         {name: 'Icon 图标', code: 'Icon'},
                         {name: 'Button 按钮', code: 'Button'}]
                 }, {
@@ -159,6 +159,9 @@
     .pl6 {
         padding-left: 6px;
     }
+    .ml10{
+        margin-left: 10px;
+    }
 
     .pr6 {
         padding-right: 6px;
@@ -185,8 +188,17 @@
         cursor: pointer;
     }
 
-    .c-content-s {
-        padding: 10px;
+    .c-content-s{
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .c-content-s .c-con{
+        margin: 20px;
+    }
+
+    .c-block{
+        line-height: 3;
     }
 
     .zx-slider-meun-btn {
@@ -195,6 +207,15 @@
 
     .zx-slider-meun {
         display: none;
+    }
+
+    .zxSliderMeunMask{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 0, 0, 0);
+        position: absolute;
+        top: 0px;
+        left: 0px;
     }
 
     .zxHide {
@@ -208,9 +229,10 @@
         position: fixed;
         z-index: 2;
         width: 55%;
-        min-height: 800px;
         background-color: #eef1f6;
         box-shadow: 1px 0px 5px #cacaca;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .slideoutPanel {
@@ -220,13 +242,19 @@
         position: fixed;
         z-index: 2;
         width: 55%;
-        min-height: 800px;
         background-color: #eef1f6;
         box-shadow: 1px 0px 5px #cacaca;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .header-logo-link {
         text-decoration: none;
+    }
+
+    .zx-left-meun-content{
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     @media screen and (max-width: 800px ) {
@@ -240,6 +268,8 @@
 
         .zx-slider-meun {
             display: block;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .zx-slider-meun-btn {

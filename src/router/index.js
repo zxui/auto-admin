@@ -6,7 +6,6 @@ import Dashboard from '../pages/Dashboard.vue';
 /*Basic*/
 import Layout from '../pages/Basic/Layout.vue';
 import Color from '../pages/Basic/Color.vue';
-import Typography from '../pages/Basic/Typography.vue';
 import Icon from '../pages/Basic/Icon.vue';
 import Button from '../pages/Basic/Button.vue';
 
@@ -45,9 +44,6 @@ const routes = [
     }, {
         path: '/Color',
         component: Color
-    }, {
-        path: '/Typography',
-        component: Typography
     }, {
         path: '/Icon',
         component: Icon
