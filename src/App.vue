@@ -159,6 +159,18 @@
     .pl6 {
         padding-left: 6px;
     }
+    .ml10pc{
+        margin-left: 10%;
+    }
+
+    .ml25pc{
+        margin-left: 25%;
+    }
+
+    .ml30pc{
+        margin-left: 30%;
+    }
+
     .ml10{
         margin-left: 10px;
     }
