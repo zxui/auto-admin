@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <div class="block">
             <span class="demonstration">有默认值</span>
             <el-color-picker v-model="color1"></el-color-picker>

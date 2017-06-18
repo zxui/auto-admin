@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <div class="block">
             <span class="demonstration">默认 click 触发子菜单</span>
             <el-cascader

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-rate
                 v-model="value3"
                 show-text>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
     </div>
 </template>

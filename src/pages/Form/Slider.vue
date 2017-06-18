@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <div class="block">
             <span class="demonstration">默认</span>
             <el-slider v-model="value1"></el-slider>

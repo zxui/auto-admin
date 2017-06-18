@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column
                     label="日期"

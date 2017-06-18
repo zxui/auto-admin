@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-progress :percentage="0"></el-progress>
         <el-progress :percentage="70"></el-progress>
         <el-progress :percentage="100" status="success"></el-progress>

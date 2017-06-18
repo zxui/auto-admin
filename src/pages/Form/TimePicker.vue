@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-time-select
                 placeholder="起始时间"
                 v-model="startTime"

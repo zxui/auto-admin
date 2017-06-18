@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-switch
                 v-model="value1"
                 on-text=""

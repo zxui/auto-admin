@@ -1,11 +1,13 @@
 <template>
-    <el-select v-model="value8" filterable placeholder="请选择">
-        <el-option
-                v-for="item in options"
-                :label="item.label"
-                :value="item.value">
-        </el-option>
-    </el-select>
+    <div class="c-con">
+        <el-select v-model="value8" filterable placeholder="请选择">
+            <el-option
+                    v-for="item in options"
+                    :label="item.label"
+                    :value="item.value">
+            </el-option>
+        </el-select>
+    </div>
 </template>
 
 <script>

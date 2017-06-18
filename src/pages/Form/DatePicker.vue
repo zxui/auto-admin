@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <div class="block">
             <span class="demonstration">周</span>
             <el-date-picker

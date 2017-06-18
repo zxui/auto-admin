@@ -123,6 +123,15 @@
                         {name: 'Message 消息提示', code: 'Message'},
                         {name: 'MessageBox 弹框', code: 'MessageBox'},
                         {name: 'Notification 通知', code: 'Notification'}]
+                }, {
+                    name: '导航',
+                    code: 'Navigation',
+                    icon: 'el-icon-more',
+                    childrens: [
+                        {name: 'NavMenu 导航菜单', code: 'NavMenu'},
+                        {name: 'Tabs 标签页', code: 'Tabs'},
+                        {name: 'Breadcrumb 面包屑', code: 'Breadcrumb'},
+                        {name: 'Dropdown 下拉菜单', code: 'Dropdown'}]
                 }]
             }
         },

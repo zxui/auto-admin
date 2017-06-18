@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-con">
         <el-tag>标签一</el-tag>
         <el-tag type="gray">标签二</el-tag>
         <el-tag type="primary">标签三</el-tag>

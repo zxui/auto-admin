@@ -32,6 +32,17 @@ import Tree from '../pages/Data/Tree.vue';
 import Pagination from '../pages/Data/Pagination.vue';
 import Badge from '../pages/Data/Badge.vue';
 
+import Alert from '../pages/Notice/Alert.vue';
+import Loading from '../pages/Notice/Loading.vue';
+import Message from '../pages/Notice/Message.vue';
+import MessageBox from '../pages/Notice/MessageBox.vue';
+import Notification from '../pages/Notice/Notification.vue';
+
+import Breadcrumb from '../pages/Navigation/Breadcrumb.vue';
+import Dropdown from '../pages/Navigation/Dropdown.vue';
+import NavMenu from '../pages/Navigation/NavMenu.vue';
+import Tabs from '../pages/Navigation/Tabs.vue';
+
 if (!window.VueRouter) Vue.use(VueRouter);
 
 const routes = [
@@ -117,6 +128,37 @@ const routes = [
     }, {
         path: '/Badge',
         component: Badge
+    }
+
+    , {
+        path: '/Alert',
+        component: Alert
+    }, {
+        path: '/Loading',
+        component: Loading
+    }, {
+        path: '/Message',
+        component: Message
+    }, {
+        path: '/MessageBox',
+        component: MessageBox
+    }, {
+        path: '/Notification',
+        component: Notification
+    }
+
+    , {
+        path: '/Breadcrumb',
+        component: Breadcrumb
+    }, {
+        path: '/Dropdown',
+        component: Dropdown
+    }, {
+        path: '/NavMenu',
+        component: NavMenu
+    }, {
+        path: '/Tabs',
+        component: Tabs
     }
 ];
 const router = new VueRouter({routes});
