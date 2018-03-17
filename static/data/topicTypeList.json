@@ -1,0 +1,32 @@
+{
+  "code": 0,
+  "data": {
+    "total": 3,
+    "list": [
+      {
+        "id": "sdfdsfsdf",
+        "name": "爱的五种语言-已婚男士版",
+        "code": "1",
+        "detail": "爱的五种语言",
+        "updateTm": "2018-10-10",
+        "createTm": "2018-10-10"
+      },
+      {
+        "id": "sdfdsfsdf",
+        "name": "爱的五种语言-已婚女士版",
+        "code": "2",
+        "detail": "爱的五种语言",
+        "updateTm": "2018-10-10",
+        "createTm": "2018-10-10"
+      },
+      {
+        "id": "sdfdsfsdf",
+        "name": "爱的五种语言-未婚人士版",
+        "code": "3",
+        "detail": "爱的五种语言",
+        "updateTm": "2018-10-10",
+        "createTm": "2018-10-10"
+      }
+    ]
+  }
+}
