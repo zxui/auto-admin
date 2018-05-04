@@ -1,24 +1,26 @@
 import axios from 'axios';
-
 axios.defaults.timeout = 40000;
-axios.defaults.withFailTips = false;
-axios.defaults.withErrorTips = false;
-
-/**
- * axios config.fail:（可选项）result.code!=0时调用的方法
- *       config.withFailTips:(可选项，默认false) result.code!=0时显示提示信息
- *       config.withErrorTips:(可选项，默认false)status!=200时显示错误提示信息
- */
+import { Loading ,Message} from 'element-ui';
 axios.interceptors.request.use(function (config) {
     // get请求关闭缓存
     if (config.method.toUpperCase() == "GET") {
         config.params ? config.params._ = Date.now() : config.params = {_: Date.now()}
     }
+    Loading.service({
+        lock: true,
+        text: '加载中...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(255, 255, 255, 0)'
+    });
     return config;
 }, function (error) {
+    Message.error('维护人员正在抢修中，稍后再试...');
+    Loading.service().close();
     return Promise.reject(error);
 })
+
 axios.interceptors.response.use(function (response) {
+    Loading.service().close();
     if (response && response.status != "200") {
         return Promise.reject({response});
     }
@@ -26,32 +28,32 @@ axios.interceptors.response.use(function (response) {
     if (data.code != 0) {
         // 需重新登录
         if (data.code == "403") {
-
+            console.error("无权限");
         }
-
         if (data.code == "402") {
-            console.log("请求超时")
+            console.error("请求超时")
         }
-
+        Message.error(data.code + '：' + data.msg);
         return Promise.reject({response});
     }
-
     return response;
 }, function (error) {
     var response = error.response;
     var status = response && response.status;
     var statusText = response && response.statusText;
     if (statusText == "timeout") {
-        // Message.error({ message:"网络连接超时！"});
+        console.error("网络连接超时")
     } else if (status == 550) {
-        // Message.error({ message:"550 Error Message"});
+        console.error("550 Error Message")
     } else if (status == 403) {
-        // Message.error({ message:"您没有权限访问该资源！"});
+        console.error("您没有权限访问该资源")
     } else if (status == 404) {
-        // Message.error({ message:"您访问的地址或页面不存在！"});
+        console.error("您访问的地址或页面不存在")
     } else if (status == 500) {
-        // Message.error({ message:"维护人员正在抢修中，稍后再试..."});
+        console.error("维护人员正在抢修中，稍后再试...")
     }
+    Message.error('维护人员正在抢修中，稍后再试...');
+    Loading.service().close();
     return Promise.reject(error);
 })
 

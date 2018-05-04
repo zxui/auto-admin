@@ -4,7 +4,8 @@
             <!--hearder start-->
             <el-col :span="24">
                 <div class="header-bg">
-                    <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i class="el-icon-menu zx-slider-meun-btn"></i></a>
+                    <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:silderStats}"><i
+                            class="el-icon-menu zx-slider-meun-btn"></i></a>
                     <a href="javascript:void(0)" @click="showSilder" :class="{zxHide:!silderStats}"><i
                             class="el-icon-close zx-slider-meun-btn"></i></a>
                     <a class="header-logo-link" href="/"><img src="./assets/logo.png" class="header-logo"></a>
@@ -27,10 +28,11 @@
             <!--宽屏菜单 start-->
             <el-col :xs="7" :sm="6" :md="5" :lg="4" class="zx-left-meun">
                 <div class="zx-left-meun-content" :style="windowHeight">
-                    <el-menu default-active="2" unique-opened router>
+                    <el-menu unique-opened router>
                         <el-submenu :index="menu.code" v-for="menu in meuns">
                             <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
-                            <el-menu-item v-for="child in menu.childrens" :index="child.code">{{child.name}}</el-menu-item>
+                            <el-menu-item v-for="child in menu.childrens" :index="child.code">{{child.name}}
+                            </el-menu-item>
                         </el-submenu>
                     </el-menu>
                 </div>
@@ -43,7 +45,8 @@
                         <el-menu unique-opened router>
                             <el-submenu :index="menu.code" v-for="menu in meuns">
                                 <template slot="title"><i :class="menu.icon"></i>{{menu.name}}</template>
-                                <el-menu-item v-for="child in menu.childrens" :index="child.code">{{child.name}}</el-menu-item>
+                                <el-menu-item v-for="child in menu.childrens" :index="child.code">{{child.name}}
+                                </el-menu-item>
                             </el-submenu>
                         </el-menu>
                     </div>
@@ -79,23 +82,23 @@
                         code: 'topic',
                         icon: 'el-icon-menu',
                         childrens: [
-                            {name: '题库分类', code: 'topicType'},
-                            {name: '题库资源', code: 'topicRes'}]
+                            {name: '题库分类', code: 'QuestionBase'},
+                            {name: '题库资源', code: 'Question'}]
                     },
                     {
                         name: '用户管理',
                         code: 'user',
                         icon: 'el-icon-menu',
                         childrens: [
-                            {name: '用户信息', code: 'userInfo'},
-                            {name: '用户日志', code: 'userLogger'}]
+                            {name: '用户信息', code: 'UserInfo'},
+                            {name: '用户日志', code: 'UserLogger'}]
                     },
                     {
                         name: '消息管理',
                         code: 'message',
                         icon: 'el-icon-menu',
                         childrens: [
-                            {name: '消息推送', code: 'message'}]
+                            {name: '消息推送', code: 'Message'}]
                     }]
             }
         },
@@ -241,6 +244,11 @@
     .zx-left-meun-content {
         overflow-x: hidden;
         overflow-y: auto;
+        height: 100%;
+    }
+
+    .zx-left-meun {
+        height: 100%;
     }
 
     @media screen and (max-width: 800px ) {
@@ -279,5 +287,9 @@
         background-color: #1c8de0;
         color: white;
         padding-top: 5px;
+    }
+
+    .el-menu {
+        height: 100%;
     }
 </style>

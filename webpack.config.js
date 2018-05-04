@@ -1,6 +1,4 @@
-const {
-    resolve
-    } = require('path')
+const resolve = require('path').resolve
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -29,31 +27,11 @@ module.exports = (options = {}) => ({
                 exclude: /node_modules/
             },
             {
-                test: /\.html$/,
-                use: [{
-                    loader: 'html-loader',
-                    options: {
-                        root: resolve(__dirname, 'src'),
-                        attrs: ['img:src', 'link:href']
-                    }
-                }]
-            },
-            {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader']
             },
             {
-                test: /favicon\.png$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]?[hash]'
-                    }
-                }]
-            },
-            {
-                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz|ico)(\?.+)?$/,
-                exclude: /favicon\.ico$/,
+                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -68,6 +46,7 @@ module.exports = (options = {}) => ({
             names: ['vendor', 'manifest']
         }),
         new HtmlWebpackPlugin({
+            favicon: resolve(__dirname, './src/assets/favicon.ico'),
             template: 'src/index.html'
         }),
         // copy custom static assets
@@ -90,14 +69,11 @@ module.exports = (options = {}) => ({
         proxy: {
             '/api/': {
                 target: 'http://127.0.0.1:8080',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
+                changeOrigin: true
             }
         },
         historyApiFallback: {
-            index: url.parse(publicPath).pathname
+            index: publicPath
         }
     },
     devtool: options.dev ? '#eval-source-map' : '#source-map'

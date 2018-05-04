@@ -1,25 +1,31 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Dashboard from '../pages/Dashboard.vue';
-
-/*Basic*/
-import TopicType from '../pages/topic/TopicType.vue';
-import TopicRes from '../pages/topic/TopicRes.vue';
+const config = {
+    'Dashboard': r => require.ensure([], () => r(require('@/pages/Dashboard.vue'))),
+    'QuestionBase': r => require.ensure([], () => r(require('@/pages/QuestionBase/Page.vue'))),
+    'Question': r => require.ensure([], () => r(require('@/pages/Question/Page.vue'))),
+    'UserInfo': r => require.ensure([], () => r(require('@/pages/UserInfo/Page.vue'))),
+    'UserLogger': r => require.ensure([], () => r(require('@/pages/UserLogger/Page.vue'))),
+    'Message': r => require.ensure([], () => r(require('@/pages/Message/Page.vue')))
+};
 
 if (!window.VueRouter) Vue.use(VueRouter);
 
 const routes = [
     {
         path: '/',
-        component: Dashboard
-    }, {
-        path: '/TopicType',
-        component: TopicType
-    }, {
-        path: '/TopicRes',
-        component: TopicRes
+        redirect: {name: 'Dashboard'}
     }
 ];
+
+Object.keys(config).forEach(key => {
+    routes.push({
+        name: key,
+        path: '/' + key,
+        component: config[key]
+    })
+})
+
 const router = new VueRouter({routes});
 export default router;
