@@ -7,6 +7,7 @@
                 :width="autoWidth+'px'">
             <slot name="content">
                 <div class="zx-form-content">
+                    <b v-if="groupTitle">{{groupTitle}}</b>
                     <el-form :model="formModel" ref="formModel" :rules="formRule" inline-message>
                         <i v-if="1==defReadAndWrite" class="icon iconfont icon-bianji opt-edit-btn" title="编辑"
                            @click="defReadAndWrite = 0;dialogTitle='编辑'"> 编辑</i>
@@ -67,6 +68,7 @@
                             </span>
                         </el-form-item>
                     </el-form>
+                    <slot name="footer"></slot>
                 </div>
             </slot>
             <div slot="footer" class="dialog-footer" style="text-align: center" v-if="defReadAndWrite==0">
@@ -94,6 +96,9 @@
             title: {
                 type: String,
                 default: "编辑"
+            },
+            groupTitle: {
+                type: String
             },
             formField: {
                 type: Array
@@ -172,7 +177,7 @@
     }
 
     .zx-form-content {
-        max-height: 520px;
+        max-height: 420px;
         overflow-x: hidden;
         overflow-y: auto;
     }

@@ -21,6 +21,11 @@ config.formRule = {
     ]
 }
 
+config.answerOptions = {
+    options: [{}],
+    truth: ''
+}
+
 config.serachModel = Utils.toSerachModel(config.columnData);
 
 config.formModel = Utils.toFormModel(config.columnData);
