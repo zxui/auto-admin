@@ -31,10 +31,19 @@
                                           v-model="formModel[field.prop]"
                                           :placeholder="field.label"
                                           :maxlength="field.maxlength"
+                                          clearable
                                           class="form-text-width" size="small">
                                     <span slot="suffix" v-if="field.maxlength">{{formModel[field.prop].length}}/{{field.maxlength}}</span>
                                 </el-input>
-
+                                <el-autocomplete v-if="'autocomplete'==field.type"
+                                                 v-model="formModel[field.prop]"
+                                                 :placeholder="field.label"
+                                                 :maxlength="field.maxlength"
+                                                 :focus="autocompleteFocus(field.suggestions)"
+                                                 :fetch-suggestions="suggestions"
+                                                 class="form-text-width" size="small">
+                                    <span slot="suffix" v-if="field.maxlength">{{formModel[field.prop].length}}/{{field.maxlength}}</span>
+                                </el-autocomplete>
                                 <el-input v-if="'textarea'==field.type"
                                           type="textarea"
                                           :rows="2"
@@ -113,7 +122,8 @@
         data: function () {
             return {
                 defReadAndWrite: this.readAndWrite,
-                dialogTitle: this.title
+                dialogTitle: this.title,
+                autocomplete: []
             }
         },
         methods: {
@@ -129,6 +139,19 @@
             },
             handleCancle(){
                 this.$emit('handleCancle');
+            },
+            suggestions(queryString, callback){
+                let autocomplete = this.autocomplete;
+                let results = queryString ? autocomplete.filter(this.createFilter(queryString)) : autocomplete;
+                callback(results);
+            },
+            createFilter(queryString) {
+                return function (autocomplete) {
+                    return (autocomplete.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+                };
+            },
+            autocompleteFocus(val){
+                this.autocomplete = !!val ? val : [];
             }
         },
         computed: {

@@ -63,6 +63,7 @@
                     formRule: Config.formRule,
                     formModel: Config.formModel,
                     currentSelectionRows: [],
+                    currentLoadParams: {},
                     answerOptions: Config.answerOptions,
                     currentAnswerOptions: {}
                 }
@@ -78,6 +79,7 @@
         methods: {
             loadingData(params){
                 var self = this;
+                self.masterGrid.currentLoadParams = params;
                 $HttpHelper.get(Urls.questionUrl, {params: params}).then(function (res) {
                     if (res.data.data) {
                         self.masterGrid.total = res.data.data.total;
@@ -116,13 +118,20 @@
                 }
                 val.options = self.masterGrid.currentAnswerOptions.options;
                 val.truth = self.masterGrid.currentAnswerOptions.truth;
-                $HttpHelper.post(Urls.questionUrl, self.$qs.stringify(val)).then(function (res) {
+                $HttpHelper({
+                    method: 'POST',
+                    url: Urls.questionUrl,
+                    headers: {
+                        'Content-type': "application/json"
+                    },
+                    data: JSON.stringify(val)
+                }).then(function (res) {
                     self.dialogStat.editVisible = false;
                     self.$message({
                         type: 'success',
-                        message: '删除成功!'
+                        message: '保存成功!'
                     });
-                    self.loadingData({});
+                    self.loadingData(self.masterGrid.currentLoadParams);
                 });
             },
             delHandleSure(){
@@ -150,7 +159,7 @@
                                     type: 'success',
                                     message: '删除成功!'
                                 });
-                                self.loadingData({});
+                                self.loadingData(self.masterGrid.currentLoadParams);
                             });
                 });
             },
@@ -164,12 +173,7 @@
             },
             answerOptionsChange(val){
                 this.masterGrid.currentAnswerOptions = val;
-                console.log(this.masterGrid.currentAnswerOptions)
             }
         }
     }
 </script>
-
-<style>
-
-</style>

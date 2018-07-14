@@ -1,11 +1,10 @@
 <template>
     <div>
-        {{opts}}
         <div v-for="(option,index) in opts">
             <el-tooltip class="item" effect="light" content="正确答案" placement="top-start">
                 <el-radio v-model="answer" :label="option.value">&nbsp;</el-radio>
             </el-tooltip>
-            <el-input v-model="option.label" :placeholder="'请输入选项'+(index+1)"
+            <el-input v-model="option.name" :placeholder="'请输入选项'+(index+1)"
                       style="width: 250px;"></el-input>
             <el-input v-model="option.value" :value="index" :placeholder="'请输入选项值'+(index+1)"
                       style="width: 140px;"></el-input>
@@ -68,7 +67,7 @@
             }
             let res = true;
             options.forEach(function (o, i) {
-                if (!(o.label && o.value)) {
+                if (!(o.name && o.value)) {
                     res = false;
                     return;
                 }

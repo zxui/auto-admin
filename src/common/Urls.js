@@ -18,6 +18,7 @@ if (API.isDev) {
 
     API.questionBaseUrl = API.basePath + 'questionBase';
     API.questionUrl = API.basePath + 'question';
+    API.userUrl = API.basePath + 'user';
 }
 
 export default API;

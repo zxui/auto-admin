@@ -1,18 +1,18 @@
 <template>
     <div class="c-con">
-        <Grid :columnData="columnData"
-              :tableData="memberPager.tableData"
-              :serachModel="serachModel"
-              :total="memberPager.total"
+        <Grid :columnData="masterGrid.columnData"
+              :tableData="masterGrid.tableData"
+              :serachModel="masterGrid.serachModel"
+              :total="masterGrid.total"
               @onRowDblclick="showEdit"
               @onChange="gridChange">
         </Grid>
         <Dialog :title="dialogStat.title"
                 :visible="dialogStat.editVisible"
                 :readAndWrite="dialogStat.readAndWrite"
-                :formField="formField"
-                :formRule="formRule"
-                :formModel="formModel"
+                :formField="masterGrid.formField"
+                :formRule="masterGrid.formRule"
+                :formModel="masterGrid.formModel"
                 @handleSure="editHandleSure"
                 @handleCancle="editHandleCancle">
         </Dialog>
@@ -31,18 +31,19 @@
                 dialogStat: {
                     title: '创建',
                     editVisible: false,
-                    readAndWrite: 0
+                    readAndWrite: Dialog.W
                 },
-                serachModel: Config.serachModel,
-                columnData: Config.columnData,
-                formField: Config.columnData,
-                formRule: Config.formRule,
-                formModel: Config.formModel,
-                memberPager: {
-                    total: 400,
+                masterGrid: {
+                    total: 0,
                     pageSize: 10,
                     currentPage: 1,
-                    tableData: []
+                    tableData: [],
+                    serachModel: Config.serachModel,
+                    columnData: Config.columnData,
+                    formField: Config.columnData,
+                    formRule: Config.formRule,
+                    formModel: Config.formModel,
+                    currentSelectionRows: []
                 }
             }
         },
@@ -56,10 +57,10 @@
         methods: {
             loadingData(params){
                 var self = this;
-                $HttpHelper.get(Urls.membership, {params: params}).then(function (res) {
+                $HttpHelper.get(Urls.userUrl, {params: params}).then(function (res) {
                     if (res.data.data) {
-                        self.memberPager.total = res.data.data.total;
-                        self.memberPager.tableData = res.data.data.list;
+                        self.masterGrid.total = res.data.data.total;
+                        self.masterGrid.tableData = res.data.data.list;
                     }
                 });
             },
@@ -67,46 +68,67 @@
                 this.loadingData(val)
             },
             showCreate() {
-                this.formModel = Config.formModel;
+                this.masterGrid.formModel = JSON.parse(JSON.stringify(Config.formModel));
                 this.dialogStat.title = '创建';
-                this.dialogStat.readAndWrite = 0;
+                this.dialogStat.readAndWrite = Dialog.W;
                 this.dialogStat.editVisible = true;
             },
             showEdit(val){
-                this.formModel = Object.assign(Config.formModel, val);
+                this.masterGrid.formModel = Object.assign({}, Config.formModel, val);
                 this.dialogStat.title = '详细';
-                this.dialogStat.readAndWrite = Dialog._.readAndWrite.readOnly;
+                this.dialogStat.readAndWrite = Dialog.R;
                 this.dialogStat.editVisible = true;
             },
-            showDelete(index, row) {
-            },
             editHandleSure(val){
-                $HttpHelper.post(Urls.membership, val).then(function (res) {
-                    this.dialogStat.editVisible = false;
+                var self = this;
+                $HttpHelper.post(Urls.userUrl, self.$qs.stringify(val)).then(function (res) {
+                    self.dialogStat.editVisible = false;
+                    self.$message({
+                        type: 'success',
+                        message: '成功!'
+                    });
+                    self.loadingData({});
                 });
             },
             delHandleSure(){
+                let self = this;
+                if (self.masterGrid.currentSelectionRows.length <= 0) {
+                    self.$message({
+                        type: 'warning',
+                        message: '请选择操作行!'
+                    });
+                    return false;
+                }
+                let params = [];
+                self.masterGrid.currentSelectionRows.forEach(function (o, i) {
+                    params.push(o.id);
+                })
+                self.$confirm('您确定要删除吗?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(function () {
+                    $HttpHelper.delete(Urls.userUrl,
+                            {params: {ids: params.join(',')}})
+                            .then(function () {
+                                self.$message({
+                                    type: 'success',
+                                    message: '删除成功!'
+                                });
+                                self.loadingData({});
+                            });
+                });
             },
             editHandleCancle(){
                 this.dialogStat.editVisible = false;
             },
-            delHandleCancle(){
+            handleSelection(val){
+                this.masterGrid.currentSelectionRows = val;
             }
         }
     }
 </script>
 
 <style>
-    .form-label-width .el-form-item__label {
-        text-align: left;
-        width: 140px !important;
-    }
 
-    .form-field-width {
-        width: 250px !important;
-    }
-
-    .c-serach .el-form-item {
-        margin-bottom: 0px;
-    }
 </style>

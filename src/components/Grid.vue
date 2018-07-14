@@ -47,7 +47,7 @@
                                  width="50">
                 </el-table-column>
                 <el-table-column v-for="column in columnData"
-                                 v-if="!column.popover&&!column.hideaway"
+                                 v-if="!column.special&&!column.hideaway"
                                  :sortable="column.sortable"
                                  :prop="column.prop"
                                  :label="column.label"
@@ -55,7 +55,7 @@
                                  :min-width="column.width">
                 </el-table-column>
                 <el-table-column
-                        v-else-if="column.popover&&!column.hideaway"
+                        v-else-if="'popover'==column.special&&!column.hideaway"
                         :sortable="column.sortable"
                         :prop="column.prop"
                         :label="column.label"
@@ -67,6 +67,16 @@
                                 {{scope.row[column.prop]}}
                             </div>
                         </el-popover>
+                    </template>
+                </el-table-column>
+                <el-table-column
+                        v-else-if="'image'==column.special&&!column.hideaway"
+                        :sortable="column.sortable"
+                        :prop="column.prop"
+                        :label="column.label"
+                        :min-width="column.width">
+                    <template slot-scope="scope">
+                        <img :src="scope.row[column.prop]" width="50px" height="50px"/>
                     </template>
                 </el-table-column>
                 <slot name="column"></slot>
@@ -123,7 +133,7 @@
         methods: {
             serach(params){
                 this.$emit('onChange', Object.assign(this.serachModel,
-                        {pageNo: this.currentPage, pageSize: this.pageSize}, params));
+                        {currentPage: this.currentPage, pageSize: this.pageSize}, params));
             },
             handleSizeChange(val){
                 this.currentPage = 1;

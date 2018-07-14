@@ -53,7 +53,8 @@
                     formField: Config.columnData,
                     formRule: Config.formRule,
                     formModel: Config.formModel,
-                    currentSelectionRows: []
+                    currentSelectionRows: [],
+                    currentLoadParams: {}
                 }
             }
         },
@@ -67,6 +68,7 @@
         methods: {
             loadingData(params){
                 var self = this;
+                self.masterGrid.currentLoadParams = params;
                 $HttpHelper.get(Urls.questionBaseUrl, {params: params}).then(function (res) {
                     if (res.data.data) {
                         self.masterGrid.total = res.data.data.total;
@@ -95,9 +97,9 @@
                     self.dialogStat.editVisible = false;
                     self.$message({
                         type: 'success',
-                        message: '成功!'
+                        message: '保存成功!'
                     });
-                    self.loadingData({});
+                    self.loadingData(self.masterGrid.currentLoadParams);
                 });
             },
             delHandleSure(){
@@ -125,7 +127,7 @@
                                     type: 'success',
                                     message: '删除成功!'
                                 });
-                                self.loadingData({});
+                                self.loadingData(self.masterGrid.currentLoadParams);
                             });
                 });
             },
